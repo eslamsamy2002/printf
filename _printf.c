@@ -8,8 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-	const char *p;
 	va_list list;
+	int i;
 
 	int charnum = 0;
 
@@ -18,26 +18,28 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
-	for (p = format; *p; p++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (*p == '%')
+		if (format[i] != '%')
 		{
-			p++;
-			if (*p == '%')
-			{
-				write(1, &p, 1);
-				charnum++;
-			}
+			write(1, &format[i], 1);
+			charnum++;
 		}
 		else
 		{
-			p++;
+			int val = 0;
+			i++;
+			if (format[i] != '%')
+			{
+				write(1, &format[i], 1);
+				charnum++;
+			}
 
-			int result = take(*p, list);
-
-			if (result < 0)
+			val = take(format[i], list);
+			/*Negative error in failures */
+			if (val < 0)
 				return (-1);
-			charnum += result;
+			charnum += val;
 		}
 	}
 

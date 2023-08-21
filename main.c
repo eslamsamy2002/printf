@@ -9,4 +9,6 @@
 int main(void)
 {
     _printf("%s","ws");
+    return(0);
 }
+
