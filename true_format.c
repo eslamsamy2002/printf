@@ -7,16 +7,29 @@
  *
  *Return: v
  */
+
 int take(char m, va_list p)
 {
-	int v = -1;
+	int n = -1;
 
-	if (m == 'c')
-		v = print_char(p);
-	else if (m == 's')
-		v = print_string(p);
-	else
-		v = strange_string(m);
+	switch (m)
+	{
+		case '%':
+			n = print_percent(1);
+			break;
+		case 'c':
+			n = print_char(p);
+			break;
+		case 's':
+			n = print_string(p);
+			break;
 
-	return (v);
+		case 'S':
+			n = print_string(p);
+			break;
+		default:
+			n = strange_string(m);
+	}
+
+	return (n);
 }

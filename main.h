@@ -8,5 +8,6 @@ int take(char c, va_list args);
 int print_string(va_list args);
 int print_char(va_list args);
 int strange_string(char c);
+int print_percent(int one);
 
 #endif

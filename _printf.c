@@ -1,23 +1,21 @@
 #include "main.h"
 
 /**
- *_printf - print formatted string
- *@format: format all type of normal and strange characters
+ *_printf - a variadic function that prints formatted strings.
+ *@format: input string
  *
- *Return: length of the formatted output string
+ *Return: number of chars printed
  */
 int _printf(const char *format, ...)
 {
-	va_list list;
-	int i;
+	va_list ap;
+	int i, charnum = 0, val = 0;
 
-	int charnum = 0;
+	if (format == NULL)
+		return (-1);
 
-	va_start(list, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
+	va_start(ap, format);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
@@ -27,24 +25,16 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			int val = 0;
-
+			val = 0;
 			i++;
-			if (format[i] != '%')
-			{
-				write(1, &format[i], 1);
-				charnum++;
-			}
 
-			val = take(format[i], list);
-			/*Negative error in failures */
+			val = take(format[i], ap);
 			if (val < 0)
 				return (-1);
 			charnum += val;
 		}
 	}
 
-	va_end(list);
+	va_end(ap);
 	return (charnum);
-
 }

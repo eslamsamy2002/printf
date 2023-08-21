@@ -2,7 +2,7 @@
 
 /**
  *strange_string - prints strange specifiers like %r
- *@c: printed functions - return characters number
+ *@c: list of arguments
  *
  *Return: characters number
  */
@@ -18,28 +18,41 @@ int strange_string(char c)
 }
 
 /**
- *print_char - print chars.
- *@p: arguments
+ *print_percent - Prints a percent sign
+ *@one: one char printed
  *
- *Return: char
+ *Return: always 1
  */
-int print_char(va_list p)
+int print_percent(int one)
 {
-	char l = va_arg(p, int);
+	char s = '%';
 
-	return (write(1, &l, 1));
+	return (write(1, &s, one));
 }
 
 /**
- *print_string - print string.
- *@p: ...
+ *print_char - prints chars
+ *@args: argument
+ *
+ *Return: always 1
+ */
+int print_char(va_list args)
+{
+	char x = va_arg(args, int);
+
+	return (write(1, &x, 1));
+}
+
+/**
+ *print_string - ...
+ *@args: ...
  *
  *Return: length of string
  */
-int print_string(va_list p)
+int print_string(va_list args)
 {
 	int i = 0;
-	char *s = va_arg(p, char *);
+	char *s = va_arg(args, char *);
 
 	if (s == NULL)
 		s = "(null)";
