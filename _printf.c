@@ -18,18 +18,18 @@ int _printf(const char *format, ...)
 va_start(list, format);
 while (*format)
 {
-    if (*format != '%')
-    {
-            write(1, format, 1);
-            char_num++;
-    }
-    else
-    {
-            format++;
-            if (*format == '\0')
-            {
-                break;
-            }
+if (*format != '%')
+{
+write(1, format, 1);
+char_num++;
+}
+else
+{
+format++;
+if (*format == '\0')
+{
+break;
+}
 
 if (*format == '%')
 {
