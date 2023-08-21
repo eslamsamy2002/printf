@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 		else
 		{
 			int val = 0;
+
 			i++;
 			if (format[i] != '%')
 			{
