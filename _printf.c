@@ -1,54 +1,48 @@
 #include "main.h"
+
 /**
- * _printf - is a function that selects the correct function to print.
- * @format: format string containing the characters and the specifiers*
- * Return: number of the printed chars
+ * _printf - print formatted string
+ * @format: format all type of normal and strange characters
+ *
+ * Return: length of the formatted output string
  */
 int _printf(const char *format, ...)
 {
-    int char_num = 0;
+
+    const char *p;
     va_list list;
+
+
+    int charnum =0;
+
     va_start(list, format);
     if (!format || (format[0] == '%' && !format[1]))
         return (-1);
     if (format[0] == '%' && format[1] == ' ' && !format[2])
         return (-1);
-
-    while (*format)
-   {
-        if (*format != '%')
+    for (p = format; *p; p++)
+    {
+        if (*p == '%')
         {
-            write(1, format, 1);
-            char_num++;
+            p++;
+            if (*p == '%')
+            {
+                write(1, &p, 1);
+                charnum ++;
+            }
+
         }
         else
         {
-            format++;
-            if (*format == '\0' || *format <-1)
-                {
-                    return -1;
-                }
+            p++;
 
-            if (*format == '%')
-            {
-                write(1, format, 1);
-                char_num++;
-            }
-            else if (*format == 'c')
-            {
-                char c = va_arg(list, int);
-                write(1, &c, 1);
-                char_num++;
-            }
-            else if (*format == 's')
-            {
-                char *str = va_arg(list, char *);
-                write(1, str, strlen(str));
-                char_num += strlen(str);
-            }
+            int result = take(*p, list);
+            if (result < 0)
+                return (-1);
+            charnum += result;
         }
-        format++;
     }
     va_end(list);
-    return (char_num);
+    return (charnum);
+
 }

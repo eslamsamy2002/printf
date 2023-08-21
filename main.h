@@ -4,6 +4,9 @@
 #include <unistd.h>
 #include <string.h>
 int _printf(const char *format, ...);
-
+int take(char c, va_list args);
+int print_string(va_list args);
+int print_char(va_list args);
+int strange_string(char c);
 
 #endif
