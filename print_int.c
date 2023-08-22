@@ -9,7 +9,7 @@
 int print_int(va_list arg)
 {
 	int n = va_arg(arg, int), divisor, length;
-	unsigned int n1;
+	int n1;
 
 	divisor = 1;
 	length = 0;
