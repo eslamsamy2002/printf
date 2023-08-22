@@ -14,6 +14,10 @@ int take(char m, va_list p)
 
 	switch (m)
 	{
+		case 'd':
+		case 'i':
+			n = print_int(p);
+			break;
 		case '%':
 			n = print_percent(1);
 			break;
