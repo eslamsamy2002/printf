@@ -5,7 +5,7 @@
  *@m: print char
  *@p: created list
  *
- *Return: n.
+ *Return: v
  */
 
 int take(char m, va_list p)
@@ -27,14 +27,15 @@ int take(char m, va_list p)
 		case 's':
 			n = print_string(p);
 			break;
-		case 'S':
-			n = print_string(p);
-			break;
+
 		case 'b':
 			n = print_binary(p);
 			break;
 		case 'r':
 			n = print_reverse(p);
+			break;
+		case 'R':
+			n = rot_13(p);
 			break;
 		default:
 			n = strange_string(m);
@@ -42,3 +43,4 @@ int take(char m, va_list p)
 
 	return (n);
 }
+
