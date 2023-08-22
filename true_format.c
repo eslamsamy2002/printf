@@ -31,7 +31,6 @@ int take(char m, va_list p)
 		case 'S':
 			n = print_string(p);
 			break;
-	
 		default:
 			n = strange_string(m);
 	}
