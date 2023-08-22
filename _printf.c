@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- *_printf - a variadic function that prints formatted strings.
+ *_printf - ...
  *@format: input string
  *
  *Return: number of chars printed
