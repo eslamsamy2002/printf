@@ -33,6 +33,9 @@ int take(char m, va_list p)
 		case 'b':
 			n = print_binary(p);
 			break;
+		case 'r':
+			n = print_reverse(p);
+			break;
 		default:
 			n = strange_string(m);
 	}

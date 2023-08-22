@@ -16,7 +16,7 @@ int print_int(va_list arg);
 int _putchar(char c);
 int size(unsigned int n, int b);
 int print_binary(va_list arg);
-
+int print_reverse(va_list args);
 
 
 
