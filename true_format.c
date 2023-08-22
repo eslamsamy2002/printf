@@ -27,9 +27,11 @@ int take(char m, va_list p)
 		case 's':
 			n = print_string(p);
 			break;
-
 		case 'S':
 			n = print_string(p);
+			break;
+		case 'b':
+			n = print_binary(p);
 			break;
 		default:
 			n = strange_string(m);
