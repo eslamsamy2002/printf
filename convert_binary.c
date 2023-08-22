@@ -13,7 +13,7 @@ int convert_binary(va_list list)
 	char *str;
 	char *rev_string;
 
-	n = va_arg(list, unsigned int);
+	n = va_arg(list, int);
 	if (n == 0)
 		return (_putchar('0'));
 	else if (n < 0)
