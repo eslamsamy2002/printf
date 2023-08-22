@@ -5,7 +5,7 @@
  *@m: print char
  *@p: created list
  *
- *Return: v
+ *Return: n.
  */
 
 int take(char m, va_list p)
